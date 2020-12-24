@@ -1,0 +1,481 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap');
+
+/*------------ Colors ------------*/
+
+:root {
+    --bg-main: #17212B;
+    --bg-chat: #0E1621;
+    --blue: #5387C1;
+    --subtitle-blue: #7F91A4
+}
+
+/*------------ Main ------------*/
+
+p, ul {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    background: black;
+    position: relative;
+}
+
+.container {
+    background: var(--bg-main);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    margin-top: 5%;
+}
+
+#modal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hidden {
+    display: none;
+}
+
+.button {
+    border: none;
+    background: var(--blue);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+    font-size: 1.07rem;
+    padding: 0.9rem 2.85rem;
+}
+
+.button:hover {
+    background: #2b5686
+}
+
+.button:active {
+    background: #76a3d6
+}
+
+/*------------ Login ------------*/
+
+.login {
+    width: 450px;
+    height: 500px;
+}
+
+.login__logo {
+    width: 10rem;
+    height: 10rem;
+    background: #232F3D;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.login__logo-img {
+    width: 6rem;
+    height: 4.6rem;
+    fill: #5188C0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login__title {
+    font-weight: 500;
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+}
+
+.login__subtitle {
+    font-size: 1.14rem;
+    color: var(--subtitle-blue);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.login__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login__input {
+    border: none;
+    border-bottom: 1px solid #465461;
+    background: transparent;
+    width: 60%;
+    padding: 1rem;
+    outline: none;
+    margin-bottom: 3rem;
+    color: white;
+}
+
+.login__input::placeholder {
+    font-size: 1.14rem;
+    font-weight: 300;
+    color: #858F98;
+}
+
+.login__input:focus {
+    border-color: #5188C0;
+}
+
+.login__input:focus::placeholder {
+    color: white;
+}
+
+.login__button {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/*------------ Photo Upload Form ------------*/
+
+.photo-upload {
+    position: relative;
+    width: 364px;
+    height: 220px;
+    align-items: start;
+    padding: 2.5rem;
+}
+
+.photo-upload__close-link {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    cursor: pointer;
+}
+
+.photo-upload__close-icon {
+    width: 1.15rem;
+    height: 1.15rem;;
+    fill: #747E87;
+}
+
+.photo-upload__close-icon:hover {
+    fill: white
+}
+
+.photo-upload__title {
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-bottom: 2.8rem;
+}
+
+.photo-upload__content {
+    display: flex;
+    align-items: center;
+}
+
+.photo-upload__placeholder-img-container {
+    width: 8.15rem;
+    height: 8.15rem;
+    background: #232F3D;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 1rem;
+}
+
+.photo-upload__placeholder-img-container--active {
+    background: #a9c0dc
+}
+
+.photo-upload__placeholder-img {
+    width: 1.65rem;
+    height: 1.42rem;
+    fill: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.photo-upload__username {
+    font-weight: 500;
+}
+
+/*------------ Photo Submit Form ------------*/
+
+.photo-submit {
+    width: 350px;
+    height: 450px;
+}
+
+.photo-submit__img-container {
+    width: 280px;
+    height: 300px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px dotted white;
+    cursor: pointer;
+}
+
+.photo-submit__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-submit__subtitle {
+    color: #7F91A4;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.photo-submit__controls {
+    width: 100%;
+    text-align: end;
+}
+
+.photo-submit__button {
+    background: transparent;
+    color: #6BB2F2;
+    border-radius: 2px;
+    padding: 0.6rem 0.9rem;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.photo-submit__button:hover {
+    background: #1D2A3A
+}
+
+.photo-submit__button:active {
+    background: #76a3d6
+}
+
+/*------------ Chat ------------*/
+
+.chat {
+    width: 800px;
+    height: 450px;
+    padding: 0;
+    flex-direction: row;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.chat__users-col {
+    height: 100%;
+    width: 260px;
+    border-right: 1px solid var(--bg-chat);
+    overflow-y: auto;
+}
+
+.chat__messages-col {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/*------------ Chat - Users List ------------*/
+
+.chat__hamburger-link {
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    cursor: pointer;
+}
+
+.chat__hamburger-icon {
+    width: 1.3rem;
+    height: 0.85rem;
+    fill: #6C7982;
+}
+
+.chat__users-list {
+    margin-top: 4.28rem
+}
+
+.list-user {
+    display: flex;
+    margin-bottom: 0.9rem;
+    align-items: center;
+}
+
+.list-user__avatar-img {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.65rem;
+    cursor: pointer;
+}
+
+.list-user__info-nickname {
+    color: var(--blue);
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.list-user__info-last-message {
+    color: #7F91A4;
+    font-weight: 300;
+    font-size: 0.85rem;
+}
+
+/*------------ Chat - Messages - Header ------------*/
+
+.chat__messages-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.chat__messages-heading-title {
+    font-weight: 300;
+}
+
+.chat__messages-heading-members {
+    color: #7F91A4;
+    font-size: 0.85rem;
+}
+
+/*------------ Chat - Messages - Footer ------------*/
+
+.chat__messages-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.chat__messages-footer-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-weight: 300;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.login__input::placeholder {
+    color: #5B6774;
+}
+
+.chat__messages-send-button {
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 0.4rem 1.5rem;
+}
+
+/*------------ Chat - Messages - Body ------------*/
+
+.chat__messages-body {
+    flex: 1;
+    background: var(--bg-chat);
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.chat__messages-body-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.message-block {
+    width: 50%;
+    display: flex;
+}
+
+.message-block--own {
+    flex-direction: row-reverse;
+    align-self: flex-end;
+}
+
+.message-block--own .message {
+    background: #2B5279;
+}
+
+.message-block--own .message-block-avatar-img {
+    margin-right: 0;
+    margin-left: 0.28rem;
+}
+
+.message-block--own .text-blocks__author {
+    text-align: end;
+}
+
+.message-block--own .message__time {
+    color: #658FB7;
+}
+
+.message-block-avatar-col {
+    align-self: center;
+}
+
+.message-block-avatar-img {
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.28rem;
+}
+
+.text-blocks {
+    flex: 1;
+}
+
+.text-blocks__author {
+    font-weight: 500;
+    color: var(--blue);
+    margin-bottom: 0.5rem;
+}
+
+.message {
+    display: flex;
+    padding: 0.5rem;
+    background: #182633;
+    border-radius: 5px;
+}
+
+.message + .message {
+    margin-top: 0.285rem;
+}
+
+.message__text {
+    font-weight: 300;
+    flex: 1;
+}
+
+.message--first::before {
+    content: 'xxx';
+}
+
+.message__time {
+    font-weight: 300;
+    color: #7F91A4;
+    align-self: flex-end;
+}
+
+.message-block--system {
+    font-weight: 300;
+    color: #7F91A4;
+    margin: 1rem 0;
+    width: 100%;
+}
