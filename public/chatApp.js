@@ -40,6 +40,7 @@ export default class ChatApp {
             chatPage.userId = this.state.userId;
             await router.openChatPage();
             wsClient.userLogin(this.state);
+            wsClient.getUsersList(this.state)
         };
 
         loginPage.onLogout = () => {
@@ -80,6 +81,16 @@ export default class ChatApp {
             const {username, userId} = data;
             chatPage.showUserLoggedIn(username, userId, this.getAvatarURL(userId));
         };
+
+        wsClient.onUsersList = (data) => {
+            const {usersList} = data;
+            if (usersList.length) {
+                chatPage.showUsersList(usersList.map(userData => {
+                    userData.avatarURL = this.getAvatarURL(userData.userId)
+                    return userData
+                }))
+            }
+        }
 
         wsClient.onUserLoggedOut = (data) => {
             const {username, userId} = data;

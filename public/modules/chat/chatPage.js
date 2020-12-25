@@ -33,6 +33,14 @@ export default class ChatPage {
         this._addSystemMessage(`${username} вошёл в чат!`);
     }
 
+    showUsersList(users) {
+        const usersList = this.appContainer.querySelector('.chat__users-list');
+        users.forEach(data => {
+            let {username, userId, avatarURL} = data;
+            usersList.appendChild(this._buildListUserElement(username, userId, avatarURL));
+        })
+    }
+
     showUserLoggedOut(username, userId) {
         const usersList = this.appContainer.querySelector('.chat__users-list');
         const listUserElements = usersList.querySelectorAll(`[data-user-id="${userId}"]`);
