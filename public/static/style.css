@@ -412,9 +412,27 @@ body {
     background: #2B5279;
 }
 
+.message-block--own .message:first-child::before {
+    content: none;
+}
+
+.message-block--own .message:first-child::after {
+    content: '';
+    position: absolute;
+    border: 10px solid transparent;
+    border-bottom-color: #2B5279;
+    right: -10px;
+    bottom: 0;
+}
+
 .message-block--own .message-block-avatar-img {
     margin-right: 0;
     margin-left: 0.28rem;
+}
+
+.message-block--own .text-blocks {
+    margin-left: 0;
+    margin-right: 0.5rem;
 }
 
 .message-block--own .text-blocks__author {
@@ -439,6 +457,7 @@ body {
 
 .text-blocks {
     flex: 1;
+    margin-left: 0.5rem;
 }
 
 .text-blocks__author {
@@ -452,6 +471,16 @@ body {
     padding: 0.5rem;
     background: #182633;
     border-radius: 5px;
+    position: relative;
+}
+
+.message:first-child::before {
+    content: '';
+    position: absolute;
+    border: 10px solid transparent;
+    border-bottom-color: #182633;
+    left: -10px;
+    bottom: 0;
 }
 
 .message + .message {

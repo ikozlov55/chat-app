@@ -10,5 +10,6 @@ node_modules/
 coverage/
 .eslintcache
 test.js
+test.html
 img
 !img/unknown.png

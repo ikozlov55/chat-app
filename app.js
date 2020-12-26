@@ -24,7 +24,8 @@ app.get('/', (request, response) => {
 
 app.get('/photo/:userId', (request, response) => {
     const userId = request.params.userId
-    response.setHeader('Cache-Control', 'no-cache')
+    response.setHeader('Cache-Control', 'no-cache, must-revalidate')
+    response.setHeader('Expires', 'Fri, 30 Oct 1998 14:19:41 GMT')
     let photo = null
     for (let ext of allowedExtensions) {
         let photoPath = path.join(__dirname, imgDir, `${userId}${ext}`)
@@ -49,6 +50,12 @@ app.post('/photo/upload', upload.single('file'), (request, response) => {
     } else {
         let tempFile = path.join(file.destination, file.filename)
         let targetFile = path.join(imgFolderPath, userId + path.extname(file.originalname))
+        for (let ext of allowedExtensions) {
+            let photoPath = path.join(__dirname, imgDir, `${userId}${ext}`)
+            if (fs.existsSync(photoPath)) {
+                fs.unlinkSync(photoPath)
+            }
+        }
         fs.copyFileSync(tempFile, targetFile)
         fs.unlinkSync(tempFile)
         response.sendStatus(200)
