@@ -70,11 +70,10 @@ export default class ChatApp {
             await router.showPhotoUploadPopup()
         }
 
-        photoSubmit.onSubmitButtonClick = (file) => {
-            fileUploader.upload(file, this.state.userId, () => {
-                router.closeModal()
-                wsClient.userAvatarChange(this.state)
-            })
+        photoSubmit.onSubmitButtonClick = async (file) => {
+            await fileUploader.upload(file, this.state.userId)
+            router.closeModal()
+            wsClient.userAvatarChange(this.state)
         }
 
         wsClient.onUserLoggedIn = (data) => {

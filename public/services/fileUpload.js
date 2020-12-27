@@ -3,18 +3,18 @@ export default class FileUploader {
         this.host = host
     }
 
-    upload(file, userId, callback) {
+    async upload(file, userId) {
         let formData = new FormData()
         formData.append('file', file)
         formData.append('userId', userId)
 
-        fetch(`${this.host}/photo/upload`, {
-            method: 'POST',
-            body: formData
-        })
-        .then(callback())
-        .catch(error => {
+        try {
+            await fetch(`${this.host}/photo/upload`, {
+                method: 'POST',
+                body: formData
+            })
+        } catch (e) {
             console.error('Error:', error);
-        });
+        }
     }
 }
