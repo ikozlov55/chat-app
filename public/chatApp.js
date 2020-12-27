@@ -72,8 +72,8 @@ export default class ChatApp {
 
         photoSubmit.onSubmitButtonClick = (file) => {
             fileUploader.upload(file, this.state.userId, () => {
-                wsClient.userAvatarChange(this.state)
                 router.closeModal()
+                wsClient.userAvatarChange(this.state)
             })
         }
 

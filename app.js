@@ -4,9 +4,6 @@ const http = require("http");
 const express = require('express')
 const multer = require('multer')
 
-const imgFolderPath = path.join(__dirname, 'img/')
-const upload = multer({dest: imgFolderPath})
-
 const WebSocketServer = require('./webSocket')
 const port = 3000
 const app = express()
@@ -14,6 +11,8 @@ const server = http.createServer(app);
 const wsServer = new WebSocketServer(server)
 
 const imgDir = '/img'
+const imgFolderPath = path.join(__dirname, imgDir)
+const upload = multer({dest: imgFolderPath})
 const allowedExtensions = ['.png', '.jpg']
 
 app.use(express.static('public'));
@@ -24,8 +23,6 @@ app.get('/', (request, response) => {
 
 app.get('/photo/:userId', (request, response) => {
     const userId = request.params.userId
-    response.setHeader('Cache-Control', 'no-cache, must-revalidate')
-    response.setHeader('Expires', 'Fri, 30 Oct 1998 14:19:41 GMT')
     let photo = null
     for (let ext of allowedExtensions) {
         let photoPath = path.join(__dirname, imgDir, `${userId}${ext}`)
@@ -34,7 +31,8 @@ app.get('/photo/:userId', (request, response) => {
         }
     }
     let result = photo || path.join(__dirname, imgDir, 'unknown.png')
-    response.sendFile(result);
+    response.setHeader('Cache-Control', 'no-store')
+    response.sendFile(result, {lastModified: false, cacheControl: false});
 })
 
 app.post('/photo/upload', upload.single('file'), (request, response) => {
