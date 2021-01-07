@@ -1,0 +1,15 @@
+.idea/
+.vscode/
+.DS_Store
+*.lock
+!yarn.lock
+*.log
+out/
+dist/
+node_modules/
+coverage/
+.eslintcache
+test.js
+test.html
+img/*
+!img/unknown.png
